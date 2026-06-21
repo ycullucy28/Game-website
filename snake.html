@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake - Game Site</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-game">
+  <header>
+    <p class="site-title">Game Site</p>
+    <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation menu">Menu</button>
+    <nav id="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#" title="Coming soon">About</a></li>
+        <li class="nav-item-has-submenu">
+          <a href="#" aria-expanded="false" aria-haspopup="true">Games</a>
+          <ul class="submenu" aria-label="Game links">
+            <li><a href="snake.html">Snake</a></li>
+            <li><a href="tetris.html">Tetris</a></li>
+          </ul>
+        </li>
+        <li><a href="#" title="Coming soon">Contact</a></li>
+        <li><a href="#" title="Coming soon">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="game-page">
+    <h1 class="game-title">Snake</h1>
+
+    <div class="game-layout">
+      <section class="game-play-area">
+        <div class="game-container">
+          <div id="game-area" class="game-area"></div>
+          <p class="game-score">Score: <span id="score">0</span></p>
+          <p class="game-status">Status: <span id="game-status" aria-live="polite">Ready</span></p>
+          <div class="game-controls-bar">
+            <button type="button" id="start-btn" class="game-btn game-btn-start" aria-label="Start Snake game">Start</button>
+            <button type="button" id="stop-btn" class="game-btn game-btn-stop" aria-label="Stop or pause Snake game">Stop / Pause</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="game-panels">
+        <section class="game-panel">
+          <h2>Controls</h2>
+          <p><strong>Arrow keys</strong> or <strong>WASD</strong> change direction. <strong>Space</strong> or <strong>Start</strong> begins or resumes the game. <strong>Stop / Pause</strong> pauses movement.</p>
+        </section>
+        <section class="game-panel">
+          <h2>Settings</h2>
+          <div class="audio-settings">
+            <label class="setting-select-label" for="speed-select">Speed</label>
+            <select id="speed-select" class="setting-select">
+              <option value="slow">Slow</option>
+              <option value="normal" selected>Normal</option>
+              <option value="fast">Fast</option>
+            </select>
+            <p class="setting-status">Speed: <span id="speed-status">Normal</span></p>
+
+            <label class="setting-toggle">
+              <input type="checkbox" id="music-mute">
+              Mute background music
+            </label>
+            <p class="setting-status">Music: <span id="music-status">On</span></p>
+
+            <label class="setting-toggle">
+              <input type="checkbox" id="sfx-toggle" checked>
+              Enable sound effects
+            </label>
+            <p class="setting-status">Sound effects: <span id="sfx-status">On</span></p>
+
+            <label class="setting-select-label" for="sfx-select">Sound effect style</label>
+            <select id="sfx-select" class="setting-select">
+              <option value="classic">Classic</option>
+              <option value="retro">Retro</option>
+              <option value="minimal">Minimal</option>
+            </select>
+            <p class="setting-status">Selected: <span id="sfx-selection-status">Classic</span></p>
+          </div>
+        </section>
+        <section class="game-panel">
+          <h2>Rules</h2>
+          <p>Eat food to grow and score points. Avoid hitting the walls or your own tail. Each food eaten adds 1 point.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Game Site</p>
+    <p>Classic browser games for fun and nostalgia.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/snake.js"></script>
+</body>
+</html>

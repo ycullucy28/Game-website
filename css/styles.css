@@ -1,0 +1,673 @@
+/* Task 3.1 — CSS variables and base styles */
+
+:root {
+  --color-bg-dark: #060912;
+  --color-bg-mid: #0c1424;
+  --color-bg-game: #101c32;
+  --color-header-footer: #0a1220;
+  --color-surface: #152238;
+
+  --color-accent-magenta: #ff2d95;
+  --color-accent-pink: #ff6eb4;
+  --color-accent-teal: #4ecdc4;
+  --color-accent-mint: #7dffd8;
+  --color-accent-blue: #3d9cff;
+
+  --color-text: #e8eef7;
+  --color-text-muted: #b8c4d6;
+
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg-dark);
+  overflow-x: clip;
+}
+
+a {
+  color: var(--color-accent-teal);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-accent-mint);
+}
+
+main {
+  flex: 1;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+/* Task 3.3 — Gradient backgrounds */
+
+.page-home {
+  background: linear-gradient(
+    160deg,
+    var(--color-bg-dark) 0%,
+    #0a1628 45%,
+    #0d1a30 100%
+  );
+}
+
+.page-game {
+  background: linear-gradient(
+    160deg,
+    var(--color-bg-mid) 0%,
+    var(--color-bg-game) 50%,
+    #142a45 100%
+  );
+}
+
+/* Task 3.4 — Subtle swirl and pattern overlay */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(255, 45, 149, 0.07), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 75%, rgba(61, 156, 255, 0.09), transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(78, 205, 196, 0.06), transparent 45%),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255, 255, 255, 0.012) 40px,
+      rgba(255, 255, 255, 0.012) 41px
+    );
+}
+
+/* Task 3.2 — Header and footer */
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--color-header-footer);
+  border-bottom: 3px solid var(--color-accent-blue);
+}
+
+footer {
+  padding: var(--space-lg);
+  text-align: center;
+  background-color: var(--color-header-footer);
+  border-top: 3px solid var(--color-accent-magenta);
+  color: var(--color-text-muted);
+}
+
+footer p {
+  margin: 0;
+}
+
+footer p + p {
+  margin-top: var(--space-sm);
+  font-size: 0.9rem;
+}
+
+.site-title {
+  margin: 0;
+  flex: 1;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+
+#menu-toggle {
+  padding: var(--space-sm) var(--space-md);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-bg-dark);
+  background-color: var(--color-accent-teal);
+  border: 2px solid var(--color-accent-mint);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#menu-toggle:hover,
+#menu-toggle:focus-visible {
+  background-color: var(--color-accent-mint);
+  color: var(--color-bg-dark);
+}
+
+#main-nav {
+  width: 100%;
+}
+
+#main-nav > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+#main-nav > ul > li {
+  position: relative;
+}
+
+#main-nav a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-text);
+  border-radius: 4px;
+}
+
+#main-nav a:hover,
+#main-nav a:focus-visible {
+  background-color: rgba(61, 156, 255, 0.15);
+  color: var(--color-accent-mint);
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 140px;
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) 0;
+  background-color: var(--color-surface);
+  border: 1px solid rgba(61, 156, 255, 0.35);
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  flex-direction: column;
+  z-index: 10;
+  display: none;
+  list-style: none;
+}
+
+.submenu a {
+  padding: var(--space-sm) var(--space-md);
+}
+
+/* Task 4.1 — Hide menu by default on smaller screens */
+
+@media (max-width: 768px) {
+  #main-nav {
+    display: none;
+  }
+
+  #main-nav.nav-open {
+    display: block;
+  }
+
+  #main-nav > ul {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .submenu {
+    position: static;
+    margin-top: 0;
+    margin-left: var(--space-md);
+    padding: var(--space-sm) 0;
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+  }
+
+  .nav-item-has-submenu.submenu-open > .submenu {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  #menu-toggle {
+    display: none;
+  }
+
+  .nav-item-has-submenu > .submenu {
+    margin-top: 0;
+    padding-top: var(--space-sm);
+  }
+
+  /* Invisible bridge so the menu stays open while moving the pointer down */
+  .nav-item-has-submenu > .submenu::before {
+    content: "";
+    position: absolute;
+    top: calc(-1 * var(--space-sm));
+    left: 0;
+    width: 100%;
+    height: var(--space-sm);
+  }
+
+  #main-nav > ul > li.nav-item-has-submenu:hover > .submenu,
+  #main-nav > ul > li.nav-item-has-submenu:focus-within > .submenu {
+    display: flex;
+  }
+}
+
+/* Task 5.4 — Landing page layout and game cards */
+
+.hero {
+  max-width: 720px;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 var(--space-md);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.hero p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+}
+
+.game-options {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.game-options-heading {
+  margin: 0 0 var(--space-lg);
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-accent-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.game-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-lg);
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  padding: var(--space-xl) var(--space-lg);
+  background-color: var(--color-surface);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: var(--color-text);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-card h3 {
+  margin: 0 0 var(--space-md);
+  font-size: 1.75rem;
+}
+
+.game-card p {
+  margin: 0;
+  flex: 1;
+  color: var(--color-text-muted);
+}
+
+.game-card-link {
+  margin-top: var(--space-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.game-card-snake {
+  border-color: rgba(78, 205, 196, 0.4);
+}
+
+.game-card-snake .game-card-link {
+  color: var(--color-accent-teal);
+}
+
+.game-card-snake:hover,
+.game-card-snake:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--color-accent-teal);
+  box-shadow: 0 16px 40px rgba(78, 205, 196, 0.2), 0 0 0 3px rgba(125, 255, 216, 0.35);
+}
+
+.game-card-snake:hover .game-card-link,
+.game-card-snake:focus-visible .game-card-link {
+  color: var(--color-accent-mint);
+}
+
+.game-card-tetris {
+  border-color: rgba(255, 45, 149, 0.35);
+}
+
+.game-card-tetris .game-card-link {
+  color: var(--color-accent-pink);
+}
+
+.game-card-tetris:hover,
+.game-card-tetris:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--color-accent-magenta);
+  box-shadow: 0 16px 40px rgba(255, 45, 149, 0.2), 0 0 0 3px rgba(255, 110, 180, 0.35);
+}
+
+.game-card-tetris:hover .game-card-link,
+.game-card-tetris:focus-visible .game-card-link {
+  color: var(--color-accent-magenta);
+}
+
+/* Task 6.4 — Game page layout */
+
+.game-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.game-title {
+  margin: 0 0 var(--space-xl);
+  text-align: center;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: var(--color-text);
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.game-play-area {
+  display: flex;
+  justify-content: center;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 520px;
+}
+
+.game-area {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.35);
+  border: 3px solid var(--color-accent-blue);
+  border-radius: 6px;
+  box-shadow: inset 0 0 40px rgba(61, 156, 255, 0.08);
+  padding: 0;
+  overflow: hidden;
+}
+
+.game-area canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.game-area-tetris {
+  max-width: 300px;
+  aspect-ratio: 1 / 2;
+  border-color: var(--color-accent-magenta);
+  box-shadow: inset 0 0 40px rgba(255, 45, 149, 0.08);
+  padding: 0;
+  overflow: hidden;
+}
+
+.game-placeholder {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  text-align: center;
+  padding: var(--space-md);
+}
+
+.game-score,
+.game-status {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.game-score span,
+.game-status span {
+  color: var(--color-accent-teal);
+}
+
+.game-controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.game-btn {
+  padding: var(--space-sm) var(--space-lg);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.game-btn-start {
+  color: var(--color-bg-dark);
+  background-color: var(--color-accent-teal);
+  border-color: var(--color-accent-mint);
+}
+
+.game-btn-start:hover,
+.game-btn-start:focus-visible {
+  background-color: var(--color-accent-mint);
+}
+
+.game-btn-stop {
+  color: var(--color-text);
+  background-color: transparent;
+  border-color: var(--color-accent-pink);
+}
+
+.game-btn-stop:hover,
+.game-btn-stop:focus-visible {
+  background-color: rgba(255, 45, 149, 0.15);
+  border-color: var(--color-accent-magenta);
+}
+
+.game-panels {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.game-panel {
+  padding: var(--space-lg);
+  background-color: rgba(21, 34, 56, 0.6);
+  border: 1px solid rgba(61, 156, 255, 0.2);
+  border-radius: 6px;
+}
+
+.game-panel h2 {
+  margin: 0 0 var(--space-sm);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-teal);
+}
+
+.game-panel p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.audio-settings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.setting-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.setting-select-label {
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.setting-select {
+  width: 100%;
+  padding: var(--space-sm);
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background-color: var(--color-bg-dark);
+  border: 1px solid rgba(61, 156, 255, 0.35);
+  border-radius: 4px;
+}
+
+.setting-select:focus-visible {
+  border-color: var(--color-accent-mint);
+}
+
+.setting-toggle:focus-within {
+  color: var(--color-accent-mint);
+}
+
+.setting-status {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.setting-status span {
+  color: var(--color-accent-teal);
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .game-layout {
+    grid-template-columns: 1fr 280px;
+  }
+}
+
+/* Task 9.1 — Accessibility focus styles */
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-mint);
+  outline-offset: 2px;
+}
+
+/* Task 9.2 — Mobile layout improvements */
+
+@media (max-width: 768px) {
+  main {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  header {
+    padding: var(--space-md);
+  }
+
+  .site-title {
+    font-size: 1.2rem;
+    min-width: 0;
+  }
+
+  .game-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .game-card {
+    min-height: auto;
+    padding: var(--space-lg);
+  }
+
+  .game-page {
+    padding: 0;
+  }
+
+  .game-title {
+    margin-bottom: var(--space-lg);
+  }
+
+  .game-area {
+    max-width: min(100%, 360px);
+  }
+
+  .game-area-tetris {
+    max-width: min(85vw, 260px);
+  }
+
+  .game-container {
+    max-width: 100%;
+    padding: 0 var(--space-sm);
+  }
+
+  .game-controls-bar {
+    width: 100%;
+  }
+
+  .game-btn {
+    flex: 1 1 140px;
+  }
+
+  .game-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .game-panel {
+    padding: var(--space-md);
+  }
+
+  #main-nav a {
+    padding: var(--space-md);
+  }
+}

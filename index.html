@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Site - Home</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-home">
+  <header>
+    <p class="site-title">Game Site</p>
+    <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation menu">Menu</button>
+    <nav id="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#" title="Coming soon">About</a></li>
+        <li class="nav-item-has-submenu">
+          <a href="#" aria-expanded="false" aria-haspopup="true">Games</a>
+          <ul class="submenu" aria-label="Game links">
+            <li><a href="snake.html">Snake</a></li>
+            <li><a href="tetris.html">Tetris</a></li>
+          </ul>
+        </li>
+        <li><a href="#" title="Coming soon">Contact</a></li>
+        <li><a href="#" title="Coming soon">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Welcome to Game Site</h1>
+      <p>Pick a classic arcade game below and jump straight into the action. No downloads required — just choose a game and play in your browser.</p>
+    </section>
+
+    <section class="game-options">
+      <h2 class="game-options-heading">Choose Your Game</h2>
+      <div class="game-cards">
+        <a href="snake.html" class="game-card game-card-snake">
+          <h3>Snake</h3>
+          <p>Guide the snake to eat food and grow longer without crashing into the walls or yourself.</p>
+          <span class="game-card-link">Play Snake</span>
+        </a>
+        <a href="tetris.html" class="game-card game-card-tetris">
+          <h3>Tetris</h3>
+          <p>Rotate and stack falling blocks to clear lines and chase your highest score.</p>
+          <span class="game-card-link">Play Tetris</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Game Site</p>
+    <p>Classic browser games for fun and nostalgia.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

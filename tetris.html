@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris - Game Site</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-game">
+  <header>
+    <p class="site-title">Game Site</p>
+    <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation menu">Menu</button>
+    <nav id="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#" title="Coming soon">About</a></li>
+        <li class="nav-item-has-submenu">
+          <a href="#" aria-expanded="false" aria-haspopup="true">Games</a>
+          <ul class="submenu" aria-label="Game links">
+            <li><a href="snake.html">Snake</a></li>
+            <li><a href="tetris.html">Tetris</a></li>
+          </ul>
+        </li>
+        <li><a href="#" title="Coming soon">Contact</a></li>
+        <li><a href="#" title="Coming soon">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="game-page">
+    <h1 class="game-title">Tetris</h1>
+
+    <div class="game-layout">
+      <section class="game-play-area">
+        <div class="game-container">
+          <div id="game-area" class="game-area game-area-tetris"></div>
+          <p class="game-score">Score: <span id="score">0</span></p>
+          <p class="game-status">Status: <span id="game-status" aria-live="polite">Ready</span></p>
+          <div class="game-controls-bar">
+            <button type="button" id="start-btn" class="game-btn game-btn-start" aria-label="Start Tetris game">Start</button>
+            <button type="button" id="stop-btn" class="game-btn game-btn-stop" aria-label="Stop or pause Tetris game">Stop / Pause</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="game-panels">
+        <section class="game-panel">
+          <h2>Controls</h2>
+          <p><strong>Left / Right</strong> move the piece. <strong>Down</strong> soft drops. <strong>Up</strong> rotates. <strong>Enter</strong> hard drops. <strong>Space</strong> or <strong>Start</strong> begins or resumes. <strong>Stop / Pause</strong> pauses falling.</p>
+        </section>
+        <section class="game-panel">
+          <h2>Settings</h2>
+          <div class="audio-settings">
+            <label class="setting-select-label" for="speed-select">Speed</label>
+            <select id="speed-select" class="setting-select">
+              <option value="slow">Slow</option>
+              <option value="normal" selected>Normal</option>
+              <option value="fast">Fast</option>
+            </select>
+            <p class="setting-status">Speed: <span id="speed-status">Normal</span></p>
+
+            <label class="setting-toggle">
+              <input type="checkbox" id="music-mute">
+              Mute background music
+            </label>
+            <p class="setting-status">Music: <span id="music-status">On</span></p>
+
+            <label class="setting-toggle">
+              <input type="checkbox" id="sfx-toggle" checked>
+              Enable sound effects
+            </label>
+            <p class="setting-status">Sound effects: <span id="sfx-status">On</span></p>
+
+            <label class="setting-select-label" for="sfx-select">Sound effect style</label>
+            <select id="sfx-select" class="setting-select">
+              <option value="classic">Classic</option>
+              <option value="retro">Retro</option>
+              <option value="minimal">Minimal</option>
+            </select>
+            <p class="setting-status">Selected: <span id="sfx-selection-status">Classic</span></p>
+          </div>
+        </section>
+        <section class="game-panel">
+          <h2>Rules</h2>
+          <p>Arrange falling pieces to complete horizontal lines. Cleared lines increase your score. Avoid stacking blocks to the top or the game ends.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Game Site</p>
+    <p>Classic browser games for fun and nostalgia.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/tetris.js"></script>
+</body>
+</html>
